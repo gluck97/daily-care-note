@@ -1,0 +1,639 @@
+[
+  {
+    "id": "intake",
+    "label": "总体食量",
+    "group": 0,
+    "type": "single",
+    "options": [
+      "和平时差不多",
+      "少一些",
+      "明显少",
+      "几乎没吃",
+      "不清楚"
+    ]
+  },
+  {
+    "id": "appetite",
+    "label": "胃口",
+    "group": 0,
+    "type": "single",
+    "options": [
+      "和平时差不多",
+      "想吃的意愿下降",
+      "几乎不想吃",
+      "不清楚"
+    ]
+  },
+  {
+    "id": "foods",
+    "label": "今天吃过的食物",
+    "group": 0,
+    "type": "multi",
+    "none": "以上都没吃",
+    "hint": "只点吃过的类别，不用记菜名或克数。勾选不代表吃够，也不要求每天吃齐。",
+    "options": [
+      "主食",
+      "肉／禽／鱼虾",
+      "蛋类",
+      "奶类",
+      "豆制品",
+      "蔬菜",
+      "水果",
+      "正在用的营养补充制剂",
+      "以上都没吃",
+      "不清楚"
+    ]
+  },
+  {
+    "id": "staples",
+    "label": "主食种类",
+    "group": 0,
+    "type": "multi",
+    "when": {
+      "key": "foods",
+      "any": [
+        "主食"
+      ]
+    },
+    "options": [
+      "米饭",
+      "面条",
+      "馒头或面包",
+      "粥",
+      "土豆或红薯",
+      "玉米或杂粮",
+      "不清楚"
+    ]
+  },
+  {
+    "id": "meatKinds",
+    "label": "肉鱼虾种类",
+    "group": 0,
+    "type": "multi",
+    "when": {
+      "key": "foods",
+      "any": [
+        "肉／禽／鱼虾"
+      ]
+    },
+    "options": [
+      "猪肉",
+      "牛肉或羊肉",
+      "鸡鸭鹅等禽肉",
+      "鱼",
+      "虾贝等水产",
+      "其他肉类",
+      "不清楚"
+    ]
+  },
+  {
+    "id": "fluids",
+    "label": "喝水或其他液体",
+    "group": 0,
+    "type": "single",
+    "options": [
+      "和平时差不多",
+      "少一些",
+      "明显少",
+      "几乎喝不下／喝后留不住",
+      "喝不下",
+      "不清楚"
+    ],
+    "patientOptions": [
+      "和平时差不多",
+      "少一些",
+      "明显少",
+      "喝不下",
+      "不清楚"
+    ]
+  },
+  {
+    "id": "urine",
+    "label": "排尿情况",
+    "group": 0,
+    "type": "single",
+    "options": [
+      "和平时差不多",
+      "明显减少",
+      "很久没有尿",
+      "不清楚"
+    ]
+  },
+  {
+    "id": "urineColor",
+    "label": "尿液颜色",
+    "group": 0,
+    "type": "multi",
+    "options": [
+      "清亮或淡黄色",
+      "深黄色",
+      "粉红色或红色",
+      "茶色或棕褐色",
+      "没看清",
+      "不清楚"
+    ],
+    "exclusive": [
+      "没看清"
+    ]
+  },
+  {
+    "id": "urineChanges",
+    "label": "排尿伴随情况",
+    "group": 0,
+    "type": "multi",
+    "none": "没有以下情况",
+    "options": [
+      "没有以下情况",
+      "尿痛",
+      "血尿",
+      "明显头晕",
+      "尿频或尿急",
+      "排尿费力或排不出",
+      "不清楚"
+    ]
+  },
+  {
+    "id": "bowelCount",
+    "label": "今天排便次数",
+    "group": 1,
+    "type": "count",
+    "hint": "实际排出大便的次数；不知道可跳过。",
+    "min": 0,
+    "patientDefault": 1
+  },
+  {
+    "id": "stoolForms",
+    "label": "今天出现的大便形态",
+    "group": 1,
+    "type": "multi",
+    "illustrated": true,
+    "when": {
+      "key": "bowelCount",
+      "not": [
+        0
+      ]
+    },
+    "hint": "一天有几种形态，可以都选。图示仅帮助描述。",
+    "options": [
+      "1 · 硬颗粒",
+      "2 · 结块硬条",
+      "3 · 成条有裂纹",
+      "4 · 柔软光滑条状",
+      "5 · 柔软小块",
+      "6 · 松散糊状",
+      "7 · 水样",
+      "不清楚"
+    ]
+  },
+  {
+    "id": "stoolCaliber",
+    "label": "成形便的粗细外形",
+    "group": 1,
+    "type": "multi",
+    "when": {
+      "key": "stoolForms",
+      "any": [
+        "2 · 结块硬条",
+        "3 · 成条有裂纹",
+        "4 · 柔软光滑条状",
+        "5 · 柔软小块"
+      ]
+    },
+    "options": [
+      "粗细和平时相近",
+      "比平时细",
+      "细条状（像铅笔）",
+      "扁带状",
+      "不清楚"
+    ]
+  },
+  {
+    "id": "looseCount",
+    "label": "其中稀便／水样便次数",
+    "group": 1,
+    "type": "count",
+    "min": 0,
+    "when": {
+      "key": "stoolForms",
+      "any": [
+        "6 · 松散糊状",
+        "7 · 水样"
+      ]
+    },
+    "patientDefault": 0
+  },
+  {
+    "id": "bowelFeel",
+    "label": "排便时的感觉",
+    "group": 1,
+    "type": "multi",
+    "none": "没有以下情况",
+    "options": [
+      "没有以下情况",
+      "排便费力",
+      "肛门疼痛",
+      "总觉得没排净",
+      "便意急、来不及",
+      "想排但排不出",
+      "不清楚"
+    ]
+  },
+  {
+    "id": "bowelFeatures",
+    "label": "便血、黏液等变化",
+    "group": 1,
+    "type": "multi",
+    "none": "未见以下变化",
+    "exclusive": [
+      "没看清"
+    ],
+    "hint": "没看清请直接选择，不用猜。",
+    "options": [
+      "未见以下变化",
+      "黏液",
+      "鲜红血",
+      "暗红血",
+      "黑而黏、像柏油",
+      "较平时明显变细",
+      "较平时明显变扁",
+      "没看清",
+      "不清楚"
+    ],
+    "patientOptions": [
+      "未见以下变化",
+      "黏液",
+      "鲜红血",
+      "暗红血",
+      "黑而黏、像柏油",
+      "没看清",
+      "不清楚"
+    ]
+  },
+  {
+    "id": "lastBowel",
+    "label": "距上次排便多久",
+    "group": 1,
+    "type": "single",
+    "when": {
+      "or": [
+        {
+          "key": "bowelCount",
+          "in": [
+            0
+          ]
+        },
+        {
+          "key": "bowelFeel",
+          "any": [
+            "想排但排不出",
+            "排便费力"
+          ]
+        }
+      ]
+    },
+    "options": [
+      "不到 1 天",
+      "约 1 天",
+      "约 2 天",
+      "3 天及以上",
+      "不清楚"
+    ]
+  },
+  {
+    "id": "gas",
+    "label": "是否还能排气",
+    "group": 1,
+    "type": "single",
+    "when": {
+      "or": [
+        {
+          "key": "bowelCount",
+          "in": [
+            0
+          ]
+        },
+        {
+          "key": "bowelFeel",
+          "any": [
+            "想排但排不出",
+            "排便费力"
+          ]
+        }
+      ]
+    },
+    "options": [
+      "有排气",
+      "明显减少",
+      "没有排气",
+      "不清楚"
+    ]
+  },
+  {
+    "id": "mouth",
+    "label": "口腔和咽喉",
+    "group": 2,
+    "type": "multi",
+    "none": "没有明显问题",
+    "options": [
+      "没有明显问题",
+      "口干",
+      "嘴里疼或有溃疡",
+      "新出现白斑或白膜",
+      "味道改变",
+      "吞咽疼痛或困难",
+      "牙龈出血",
+      "不清楚"
+    ]
+  },
+  {
+    "id": "mouthImpact",
+    "label": "口腔问题对吃喝的影响",
+    "group": 2,
+    "type": "single",
+    "when": {
+      "key": "mouth",
+      "symptom": true
+    },
+    "options": [
+      "不影响吃喝",
+      "有影响但还能吃喝",
+      "几乎不能吃喝",
+      "不清楚"
+    ]
+  },
+  {
+    "id": "nausea",
+    "label": "恶心",
+    "group": 2,
+    "type": "single",
+    "options": [
+      "没有",
+      "有恶心但吃喝不受影响",
+      "影响吃喝",
+      "几乎不能吃喝",
+      "不清楚"
+    ]
+  },
+  {
+    "id": "vomitCount",
+    "label": "今天呕吐次数",
+    "group": 2,
+    "type": "count",
+    "min": 0,
+    "patientDefault": 0
+  },
+  {
+    "id": "keepFluids",
+    "label": "呕吐后喝水的情况",
+    "group": 2,
+    "type": "single",
+    "when": {
+      "key": "vomitCount",
+      "positive": true
+    },
+    "options": [
+      "能喝下并保留",
+      "喝后又吐",
+      "还没试",
+      "不清楚"
+    ]
+  },
+  {
+    "id": "abdomen",
+    "label": "腹部感觉",
+    "group": 2,
+    "type": "multi",
+    "none": "没有明显不适",
+    "options": [
+      "没有明显不适",
+      "腹胀",
+      "腹痛",
+      "胃酸",
+      "不清楚"
+    ]
+  },
+  {
+    "id": "abdomenImpact",
+    "label": "腹部不适的程度",
+    "group": 2,
+    "type": "single",
+    "when": {
+      "key": "abdomen",
+      "symptom": true
+    },
+    "options": [
+      "轻微，不影响活动",
+      "影响吃饭或活动",
+      "剧烈或持续加重",
+      "不清楚"
+    ]
+  },
+  {
+    "id": "nerve",
+    "label": "手脚感觉",
+    "group": 3,
+    "type": "multi",
+    "none": "没有明显问题",
+    "options": [
+      "没有明显问题",
+      "手麻或刺痛",
+      "脚麻或刺痛",
+      "接触冷东西不舒服",
+      "不清楚"
+    ]
+  },
+  {
+    "id": "nerveImpact",
+    "label": "手脚感觉是否影响动作",
+    "group": 3,
+    "type": "multi",
+    "none": "不影响动作",
+    "when": {
+      "key": "nerve",
+      "symptom": true
+    },
+    "options": [
+      "不影响动作",
+      "拿筷子、扣扣子等受影响",
+      "走路受影响",
+      "不清楚"
+    ]
+  },
+  {
+    "id": "handFoot",
+    "label": "手掌或脚底皮肤",
+    "group": 3,
+    "type": "multi",
+    "none": "没有明显问题",
+    "options": [
+      "没有明显问题",
+      "发红或灼热",
+      "疼痛",
+      "脱皮、裂口或水泡",
+      "不清楚"
+    ]
+  },
+  {
+    "id": "skinImpact",
+    "label": "手脚皮肤是否影响动作",
+    "group": 3,
+    "type": "multi",
+    "none": "不影响日常动作",
+    "when": {
+      "key": "handFoot",
+      "symptom": true
+    },
+    "options": [
+      "不影响日常动作",
+      "影响用手",
+      "影响走路",
+      "不清楚"
+    ]
+  },
+  {
+    "id": "rash",
+    "label": "其他部位的皮肤",
+    "group": 3,
+    "type": "multi",
+    "none": "没有明显问题",
+    "options": [
+      "没有明显问题",
+      "起疹",
+      "瘙痒",
+      "不清楚"
+    ]
+  },
+  {
+    "id": "energy",
+    "label": "体力",
+    "group": 3,
+    "type": "single",
+    "wide": true,
+    "options": [
+      "日常活动和平时差不多",
+      "容易累，但自理走动不受影响",
+      "活动明显减少，需要多休息",
+      "日常自理需要帮助",
+      "不清楚"
+    ]
+  },
+  {
+    "id": "sleep",
+    "label": "昨晚到今天的睡眠",
+    "group": 3,
+    "type": "single",
+    "wide": true,
+    "options": [
+      "睡得还可以",
+      "有些问题，但白天影响不大",
+      "明显影响白天",
+      "不清楚"
+    ]
+  },
+  {
+    "id": "sleepDetails",
+    "label": "睡眠表现",
+    "group": 3,
+    "type": "multi",
+    "when": {
+      "key": "sleep",
+      "in": [
+        "有些问题，但白天影响不大",
+        "明显影响白天"
+      ]
+    },
+    "options": [
+      "入睡难",
+      "容易醒",
+      "早醒",
+      "睡得过多或白天嗜睡",
+      "不清楚"
+    ]
+  },
+  {
+    "id": "urgent",
+    "label": "其他身体感觉",
+    "group": 4,
+    "type": "multi",
+    "none": "没有以下情况",
+    "hint": "选中这些表现会立即显示提醒，不用等填完。",
+    "wide": true,
+    "options": [
+      "没有以下情况",
+      "发热感或明显发冷寒战",
+      "胸痛",
+      "气短或呼吸困难",
+      "新出现或加重的明显出血",
+      "一侧手臂或腿突然肿痛",
+      "剧烈头痛或视物变化",
+      "突发肢体无力或说话困难",
+      "剧烈或持续加重的腹痛",
+      "不清楚"
+    ],
+    "aliases": [
+      "需要及时告诉医护的情况"
+    ]
+  },
+  {
+    "id": "contact",
+    "label": "是否需要家属联系",
+    "group": 4,
+    "type": "single",
+    "wide": true,
+    "hint": "只在简报里告知家属；网页不会自动发消息。",
+    "options": [
+      "暂时不需要",
+      "有选项未涵盖的情况，需要家属联系",
+      "不清楚"
+    ],
+    "patientHidden": true
+  },
+  {
+    "id": "temperature",
+    "label": "体温",
+    "group": 4,
+    "type": "measure",
+    "unit": "℃",
+    "min": 30,
+    "max": 45,
+    "step": 0.1
+  },
+  {
+    "id": "weight",
+    "label": "体重",
+    "group": 4,
+    "type": "measure",
+    "unit": "kg",
+    "min": 1,
+    "max": 400,
+    "step": 0.1
+  },
+  {
+    "id": "systolic",
+    "label": "收缩压（高压）",
+    "group": 4,
+    "type": "measure",
+    "unit": "mmHg",
+    "min": 40,
+    "max": 300,
+    "step": 1
+  },
+  {
+    "id": "diastolic",
+    "label": "舒张压（低压）",
+    "group": 4,
+    "type": "measure",
+    "unit": "mmHg",
+    "min": 20,
+    "max": 200,
+    "step": 1
+  },
+  {
+    "id": "notes",
+    "label": "补充",
+    "group": 4,
+    "type": "text",
+    "maxLength": 2000,
+    "placeholder": "想补充的写在这里，也可以留空"
+  }
+]

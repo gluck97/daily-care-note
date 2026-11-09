@@ -1,0 +1,11 @@
+import fs from 'node:fs';
+const read=p=>fs.readFileSync(new URL(p,import.meta.url),'utf8');
+let h=read('src/patient.html');
+const fields=JSON.stringify(JSON.parse(read('src/fields.json'))).replaceAll('<','\\u003c');
+const atlas='data:image/png;base64,'+fs.readFileSync(new URL('src/assets/bunny-atlas-v4.png',import.meta.url)).toString('base64');
+const embedded=p=>'data:image/png;base64,'+fs.readFileSync(new URL(p,import.meta.url)).toString('base64');
+h=h.replace('<!--CARE_CSS-->',read('src/patient.css').replace('__BUNNY_DATA__',atlas).replace('__FOOD_DATA__',embedded('src/assets/food-v5.png')).replace('__SYMPTOM_DATA__',embedded('src/assets/symptoms-v5.png')));
+h=h.replace('<!--CARE_CORE-->',`<script id="care-fields" type="application/json">${fields}</script>\n<script>${read('src/core.js')}</script>\n<script>${read('src/presentation.js')}</script>\n<script>${read('src/icons.js')}</script>\n<script>${read('src/rabbit-icons.js')}</script>\n<script>${read('src/bunny-controls.js')}</script>\n<script>${read('src/calendar.js')}</script>`);
+h=h.replace('<!--CARE_APP-->',read('src/patient.js'));
+fs.mkdirSync(new URL('dist/',import.meta.url),{recursive:true});fs.writeFileSync(new URL('dist/index.html',import.meta.url),h);
+console.log('Built anonymous standalone bunny form.');

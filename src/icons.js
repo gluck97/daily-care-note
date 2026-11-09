@@ -1,0 +1,50 @@
+/* Editable, original SVG illustrations. Shapes describe observations, not diagnoses. */
+(()=>{'use strict';let serial=0;const stroke='stroke="#6a796b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"';
+const rabbit='<path d="M23 30C11 10 18 1 25 8L31 24C34 5 44 4 45 13L40 30C50 33 52 44 46 51C40 60 22 59 16 50C10 41 14 33 23 30Z" fill="#fffefb" '+stroke+'/><path d="M21 13L26 26M39 14L36 26" stroke="#edb4ab" stroke-width="3" stroke-linecap="round"/>';
+const belly='<path d="M21 10Q15 18 18 26L12 46Q12 58 32 59Q52 58 52 46L46 26Q49 18 43 10" fill="#f2dfcf" '+stroke+'/><path d="M22 8Q32 14 42 8M31 44h2" fill="none" '+stroke+'/>';
+const mouth='<path d="M8 28Q20 16 32 20Q44 16 56 28Q44 48 32 46Q20 48 8 28Z" fill="#f0b9b0" stroke="#a47773" stroke-width="2.5"/><path d="M12 29Q32 37 52 29Q42 43 32 42Q22 43 12 29Z" fill="#b87572"/><path d="M15 28Q32 23 49 28L46 33Q32 36 18 33Z" fill="#fffdf4"/>';
+const cup=(color,level=29)=>'<path d="M17 12h30l-3 43q-12 6-24 0Z" fill="#f3f7ee" '+stroke+'/><path d="M19 '+level+'Q32 '+(level+5)+' 45 '+level+'L43 53Q32 58 21 53Z" fill="'+color+'"/><path d="M22 17l2 31M41 19h4M40 26h4M40 33h4" stroke="#fff" stroke-width="2.3" stroke-linecap="round"/><path d="M17 12q15 5 30 0" fill="none" '+stroke+'/>';
+const bladder='<path d="M26 8v9M38 8v9" '+stroke+'/><path d="M17 19Q32 11 47 19Q54 29 46 41L35 49v10h-6V49L18 41Q10 29 17 19Z" fill="#dfe8d2" '+stroke+'/>';
+const drop=(x,y,color='#c67c78')=>'<path d="M'+x+' '+y+'q-12 14 0 18q12-4 0-18Z" fill="'+color+'"/>';
+const star='<path d="m32 25 3 7 8 2-7 4-1 8-5-6-8 1 4-7-3-7 7 2Z" fill="#df9c72" stroke="#b77852" stroke-width="1.6"/>';
+const clock='<circle cx="47" cy="45" r="12" fill="#fffdf6" '+stroke+'/><path d="M47 37v9l6 3" fill="none" '+stroke+'/>';
+const map={
+none:rabbit+'<path d="M22 40q3-3 6 0M36 40q3-3 6 0M29 47q4 3 8-1" fill="none" '+stroke+'/><circle cx="49" cy="49" r="12" fill="#e2ecd8" stroke="#6b8867" stroke-width="2"/><path d="m43 49 4 4 8-9" fill="none" stroke="#52724e" stroke-width="3" stroke-linecap="round"/>',
+unknown:'<g transform="rotate(-9 30 37)">'+rabbit+'<circle cx="24" cy="41" r="2" fill="#61755f"/><circle cx="37" cy="41" r="2" fill="#61755f"/><path d="M28 49q3-2 6 0" fill="none" '+stroke+'/></g><path d="M45 8q-2-6 6-6q10 0 9 8q0 4-6 6v4" fill="none" stroke="#ab8b65" stroke-width="3" stroke-linecap="round"/><circle cx="54" cy="25" r="1.7" fill="#ab8b65"/>',
+urineFull:cup('#e5cb7c',24),urineLow:cup('#e5cb7c',43),urineNone:cup('#eff2e8',52)+clock,
+urinePale:cup('#eee1ad'),urineDark:cup('#d6a744'),urineRed:cup('#d8948b'),urineBrown:cup('#a17b53'),unseen:'<path d="M8 32q24-28 48 0q-24 28-48 0Z" fill="#e9eee0" '+stroke+'/><circle cx="32" cy="32" r="8" fill="#c0ccb1"/><path d="m14 13 37 38" stroke="#7f8c76" stroke-width="3" stroke-linecap="round"/>',
+urinePain:bladder+star,urineBlood:cup('#edce9e')+drop(40,30),urineFrequent:bladder+clock,urineDifficult:bladder+'<path d="M20 54h24M24 49l-4 5 4 5" fill="none" stroke="#bd9b72" stroke-width="3" stroke-linecap="round"/>',
+dizzy:rabbit+'<path d="M20 40q9-9 9 0q0 6-6 2M35 40q9-9 9 0q0 6-6 2M28 49h7" fill="none" '+stroke+'/>',
+mouthDry:mouth+'<path d="m24 20 3 5-3 5M40 37l-3 5 2 4" fill="none" stroke="#945f58" stroke-width="2"/>'+drop(54,44,'#b3ced3'),
+mouthSore:mouth+'<ellipse cx="25" cy="39" rx="7" ry="5" fill="#d9938a"/><ellipse cx="25" cy="39" rx="4" ry="2.5" fill="#fff0ce"/>',
+mouthWhite:mouth+'<path d="M25 36q4-6 10-2q9-1 10 5q-6 8-15 4q-8 0-5-7Z" fill="#fffdf0" stroke="#d5c6b4" stroke-width="1.3"/>',
+mouthTaste:'<path d="M15 14h34v20Q49 57 32 58Q15 57 15 34Z" fill="#f2c5ba" stroke="#a8776e" stroke-width="2.5"/><path d="M32 18v28" fill="none" stroke="#c28b81" stroke-width="2"/><circle cx="23" cy="30" r="2" fill="#cc978c"/><circle cx="39" cy="34" r="2" fill="#cc978c"/><path d="M5 17q-6 5 0 11M58 17q6 5 0 11" fill="none" '+stroke+'/>',
+swallow:'<path d="M37 7q-17-4-21 13l-5 13 7 3v7h9v13h18V37q12-10 7-19q-3-9-15-11Z" fill="#e9eadc" '+stroke+'/><path d="M29 29q8 1 7 12v10" fill="none" stroke="#c48d76" stroke-width="4" stroke-linecap="round"/><path d="m29 42 6 7 7-6" fill="none" stroke="#c48d76" stroke-width="2.5"/>',
+gumBlood:mouth+'<path d="M17 27q15-5 30 0" fill="none" stroke="#d38d83" stroke-width="4"/>'+drop(45,39),
+bloat:belly+'<ellipse cx="32" cy="34" rx="14" ry="12" fill="#f1c9a3" stroke="#c0976f" stroke-width="2"/><circle cx="25" cy="31" r="3" fill="#fff2d7"/><circle cx="36" cy="28" r="4" fill="#fff2d7"/><circle cx="37" cy="38" r="3" fill="#fff2d7"/>',
+bellyPain:belly+star,
+gas:'<path d="M10 26h31q16 0 13-11q-4-8-10-2M6 34h35q17 0 13 12q-4 10-11 3M14 42h15" fill="none" stroke="#99b0a2" stroke-width="4" stroke-linecap="round"/>',
+gasLow:'<path d="M14 30h22q15 0 13-10q-3-7-8-2M10 39h22" fill="none" stroke="#99b0a2" stroke-width="3" stroke-linecap="round"/>',
+gasNone:'<circle cx="32" cy="32" r="22" fill="#edf1e5" stroke="#a8bba6" stroke-width="2.5"/><path d="M18 32h28" stroke="#8ba185" stroke-width="3" stroke-linecap="round"/>',
+pain:belly+star,frequency:bladder+clock,
+hand:'<path d="M17 52V28q0-6 5-4V14q0-7 5-3V8q5-5 7 1v3q6-4 6 4v6q6-3 6 4v12l7-6q6-2 5 4L45 55q-9 9-22 3Z" fill="#f1ddc9" '+stroke+'/>',
+foot:'<path d="M27 11q6-7 10-1q7-4 10 3q7 2 4 9q6 4 1 12q-9 9-12 22q-4 8-14 5q-10-4-7-14q5-10 5-18q-5-12 3-18Z" fill="#f1ddc9" '+stroke+'/>',
+rash:'<path d="M12 14q20-9 40 0v37q-20 9-40 0Z" fill="#f3ddcc" stroke="#c8ac95" stroke-width="2"/><g fill="#d49b8a"><circle cx="22" cy="25" r="4"/><circle cx="39" cy="23" r="3"/><circle cx="32" cy="37" r="4"/><circle cx="43" cy="45" r="3"/><circle cx="20" cy="45" r="3"/></g>',
+itch:'<path d="M16 13q16-8 33 0v39q-16 8-33 0Z" fill="#f3ddcc" stroke="#c8ac95" stroke-width="2"/><path d="m26 23 13 16M22 31l13 16M37 17l13 16" stroke="#d19780" stroke-width="3" stroke-linecap="round"/>',
+sleepGood:rabbit+'<path d="M20 40q5 5 10 0M34 40q5 5 10 0M29 48h7" fill="none" '+stroke+'/>',
+sleepLight:rabbit+'<path d="M20 40h9M35 40h9M29 48q4-3 8 0" fill="none" '+stroke+'/><path d="M49 9h10l-9 9h10" fill="none" stroke="#b9a783" stroke-width="2"/>',
+};
+const stools=[
+'<path d="M13 24q-4-10 5-12q9-3 12 6q2 9-7 12q-9 2-10-6ZM39 12q9-9 17-1q8 9-2 16q-10 5-17-2q-5-6 2-13ZM62 37q0-12 13-13q13 0 13 12q-1 14-14 14q-12-1-12-13ZM28 44q-2-11 10-13q12-1 12 11q-1 11-12 11q-9 0-10-9Z"/><path d="M17 17l5-1M43 14l7-1M70 31l7 1M33 38l6-1" class="shine"/>',
+'<path d="M9 40q-4-12 7-17q0-11 13-11q5-9 17-5q12-6 21 4q15-2 20 12q7 15-9 20q-6 11-20 6q-11 9-23 1q-13 6-20-4q-4-1-6-6Z"/><path d="M26 17q8 5 4 16M46 12q9 6 5 18M66 15q8 6 2 18M18 34q8-3 13 4M40 37q6-5 14 2M60 34q8-5 15 0" fill="none" stroke="#ad845b" stroke-width="2.5"/>',
+'<path d="M10 39Q8 26 23 22L70 10q17-4 18 11q2 14-13 19L27 52Q12 56 10 39Z"/><path d="m30 24-1 9 8 3-4 10M48 19l4 8-6 7 8 5M68 15l-3 9 8 5-3 9" fill="none" stroke="#ebc796" stroke-width="2" stroke-linejoin="round"/><path d="M17 31l8-3M56 17l7-2" class="shine"/>',
+'<path d="M11 37Q8 23 25 24L48 28q11 0 17-12q7-14 17-4q12 15-1 28q-11 14-32 10l-21-4Q15 50 11 37Z"/><path d="M18 31q13-3 29 4q21 5 30-15" class="shine"/>',
+'<path d="M9 19q3-10 17-10q16 1 16 11q-2 11-19 10Q7 30 9 19ZM52 16q12-11 28-5q13 7 4 16q-10 9-24 4q-13-4-8-15ZM29 43q1-12 18-11q18-1 23 9q3 12-17 14q-24 2-24-12Z"/><path d="M17 15q8-3 15 0M61 18q8-4 15 0M39 40q13-4 22 3" class="shine"/>',
+'<path d="M8 30q-3-7 6-9q-4-10 10-9q4-9 15-3q9-7 17 0q10-2 13 6q16-2 16 8q10 4 3 13q5 8-7 10q-4 12-19 6q-10 7-19 0q-17 7-21-3q-15 1-11-9q-10-2-3-10Z"/><path d="M20 24q12-8 23 0M51 18q12-1 21 8M25 37q9-6 20 1M53 39q14-5 22 0" fill="none" stroke="#d2b282" stroke-width="3" stroke-linecap="round"/>',
+'<path d="M8 32q4-15 28-13q12-7 30-1q28 0 23 16q8 14-23 18q-18 6-32-1Q4 52 8 32Z" fill="#c6a26c" opacity=".78"/><path d="M17 32q14-8 28-3t31-1M21 41q16-5 29-1t29-3" fill="none" stroke="#efdbb7" stroke-width="3" stroke-linecap="round"/>'
+];
+function stoolSvg(i){const uid='poo-'+serial++;return '<defs><linearGradient id="'+uid+'" x2="0" y2="1"><stop stop-color="#b28a58"/><stop offset="1" stop-color="#8e693f"/></linearGradient></defs><g fill="url(#'+uid+')" stroke="#8e6b44" stroke-width="1.4" stroke-linejoin="round">'+stools[i].replaceAll('class="shine"','fill="none" stroke="#d7b589" stroke-width="3" stroke-linecap="round"')+'</g>';}
+const stoolBase='<path d="M11 38Q9 25 25 24L72 18Q87 17 86 30Q86 42 72 42L27 49Q12 52 11 38Z" fill="#a58152" stroke="#896b47" stroke-width="2"/>';
+function stoolFeature(k){if(k==='thin')return '<path d="M14 24q20 5 34-2t34-1M14 42q18-4 34 0t34-2" fill="none" stroke="#a58152" stroke-width="7" stroke-linecap="round"/>';if(k==='flat')return '<path d="M9 26q19-12 37-5t40-1l-4 18q-23 6-38-1t-32 7Z" fill="#b49367" stroke="#8e714e" stroke-width="2"/><path d="M15 30q18-7 32-2t33 0" fill="none" stroke="#e2c59d" stroke-width="3"/>';if(k==='black')return stoolBase.replaceAll('#a58152','#504b43').replaceAll('#896b47','#403e38')+'<path d="m24 29 27-4" stroke="#969188" stroke-width="4" stroke-linecap="round"/>';if(k==='mucus')return stoolBase+'<path d="M25 24q11 6 14 16q12-14 24-11q9 7 13 5" fill="none" stroke="#e4e2b3" stroke-width="9" stroke-linecap="round" opacity=".9"/>';return stoolBase+'<path d="M22 31q12-7 25 1t27-3M40 42l11-2" fill="none" stroke="'+(k==='bloodDark'?'#855052':'#c6786c')+'" stroke-width="5" stroke-linecap="round"/>';}
+function make(key){const s=document.createElementNS('http://www.w3.org/2000/svg','svg');let wide=false,body;if(key.startsWith('caliber:')){wide=true;const k=key.slice(8),w=k==='pencil'?5:k==='narrow'?9:17;body='<path d="M13 23q30-6 68 2M13 44q30-6 68 0" fill="none" stroke="#a58152" stroke-width="'+w+'" stroke-linecap="round"/>'+(k==='pencil'?'<path d="M12 57h62l10-3-10-3H12Z" fill="#d9c4a0" stroke="#9f927b" stroke-width="1"/>':'');}else if(key.startsWith('stool')){wide=true;body=stoolSvg(Number(key.slice(5)));}else if(key.startsWith('feature:')){wide=true;body=stoolFeature(key.slice(8));}else body=map[key];if(!body)return null;s.setAttribute('viewBox',wide?'0 0 96 64':'0 0 64 64');s.setAttribute('class','care-icon'+(wide?' wide-icon':''));s.setAttribute('aria-hidden','true');s.innerHTML=body;return s;}
+window.CareIcons={make};})();
