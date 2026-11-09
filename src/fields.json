@@ -120,6 +120,81 @@
     ]
   },
   {
+    "id": "urineTimes",
+    "label": "截至记录时的小便次数",
+    "group": 0,
+    "type": "count",
+    "min": 0,
+    "choiceCounts": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      "6 次及以上",
+      "不清楚"
+    ],
+    "noDefault": true,
+    "patientColumns": 4,
+    "when": {
+      "key": "urine",
+      "in": [
+        "明显减少",
+        "很久没有尿"
+      ]
+    }
+  },
+  {
+    "id": "urinePerVoid",
+    "label": "每次小便量与平时相比",
+    "group": 0,
+    "type": "single",
+    "patientColumns": 3,
+    "when": {
+      "key": "urine",
+      "in": [
+        "明显减少",
+        "很久没有尿"
+      ],
+      "unless": {
+        "key": "urineTimes",
+        "in": [
+          0
+        ]
+      }
+    },
+    "options": [
+      "和平时差不多",
+      "少一些",
+      "明显少",
+      "只有几滴",
+      "没留意",
+      "不清楚"
+    ]
+  },
+  {
+    "id": "lastUrine",
+    "label": "距上次小便多久",
+    "group": 0,
+    "type": "single",
+    "patientColumns": 5,
+    "when": {
+      "key": "urine",
+      "in": [
+        "明显减少",
+        "很久没有尿"
+      ]
+    },
+    "options": [
+      "不到 2 小时",
+      "2 至不足 4 小时",
+      "4 至不足 6 小时",
+      "6 小时及以上",
+      "不清楚"
+    ]
+  },
+  {
     "id": "urineColor",
     "label": "尿液颜色",
     "group": 0,

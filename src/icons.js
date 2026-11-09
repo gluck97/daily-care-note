@@ -11,7 +11,7 @@ const clock='<circle cx="47" cy="45" r="12" fill="#fffdf6" '+stroke+'/><path d="
 const map={
 none:rabbit+'<path d="M22 40q3-3 6 0M36 40q3-3 6 0M29 47q4 3 8-1" fill="none" '+stroke+'/><circle cx="49" cy="49" r="12" fill="#e2ecd8" stroke="#6b8867" stroke-width="2"/><path d="m43 49 4 4 8-9" fill="none" stroke="#52724e" stroke-width="3" stroke-linecap="round"/>',
 unknown:'<g transform="rotate(-9 30 37)">'+rabbit+'<circle cx="24" cy="41" r="2" fill="#61755f"/><circle cx="37" cy="41" r="2" fill="#61755f"/><path d="M28 49q3-2 6 0" fill="none" '+stroke+'/></g><path d="M45 8q-2-6 6-6q10 0 9 8q0 4-6 6v4" fill="none" stroke="#ab8b65" stroke-width="3" stroke-linecap="round"/><circle cx="54" cy="25" r="1.7" fill="#ab8b65"/>',
-urineFull:cup('#e5cb7c',24),urineLow:cup('#e5cb7c',43),urineNone:cup('#eff2e8',52)+clock,
+urineFull:cup('#e5cb7c',24),urineSome:cup('#e5cb7c',35),urineDrops:cup('#e5cb7c',50),urineLow:cup('#e5cb7c',43),urineNone:cup('#eff2e8',52)+clock,
 urinePale:cup('#eee1ad'),urineDark:cup('#d6a744'),urineRed:cup('#d8948b'),urineBrown:cup('#a17b53'),unseen:'<path d="M8 32q24-28 48 0q-24 28-48 0Z" fill="#e9eee0" '+stroke+'/><circle cx="32" cy="32" r="8" fill="#c0ccb1"/><path d="m14 13 37 38" stroke="#7f8c76" stroke-width="3" stroke-linecap="round"/>',
 urinePain:bladder+star,urineBlood:cup('#edce9e')+drop(40,30),urineFrequent:bladder+clock,urineDifficult:bladder+'<path d="M20 54h24M24 49l-4 5 4 5" fill="none" stroke="#bd9b72" stroke-width="3" stroke-linecap="round"/>',
 dizzy:rabbit+'<path d="M20 40q9-9 9 0q0 6-6 2M35 40q9-9 9 0q0 6-6 2M28 49h7" fill="none" '+stroke+'/>',

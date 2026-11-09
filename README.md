@@ -11,6 +11,7 @@
 安装 Node.js 24 后，在本目录运行：
 
 ```sh
+node --test tests/*.test.mjs
 node build.mjs
 ```
 
@@ -35,5 +36,9 @@ GitHub Pages 适合托管这类静态页面，但不能据此保证国内网络�
 - `dist/`：构建输出，可由工作流重新生成。
 
 表单和接收端需要使用兼容的字段定义与记录格式；修改记录字段时应同步维护本地接收端。换网址不会自动迁移旧浏览器中保存的资料。
+
+UI 9 增加排尿补充项：选“明显减少”或“很久没有尿”后，点选截至记录时的次数、每次大致尿量和距上次小便的间隔。次数不默认填零；明确选择 0 次时不问每次尿量；改回如常时清除补充答案。6 次及以上是范围，不是精确计数。所有补充项均可留空或选未知。
+
+生成简报时自动标注北京时间的填写时间，反馈日期仍以填写人选择为准；补填历史日期时，填写时间不代表当时的观察时间。时间分组用于收集情况，不用于自动判断风险。兼容原来的版本 2 简报。
 
 依据：[GitHub Pages 说明](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages)、[配置发布来源](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)、[自定义工作流](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)。配置核对日期：2026-11-09。

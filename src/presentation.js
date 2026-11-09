@@ -7,6 +7,9 @@ staples:['主食种类',[['米饭','food:0'],['面条','food:1'],['馒头面包'
 meatKinds:['肉类',[['猪肉','food:6'],['牛羊肉','food:7'],['鸡鸭鹅','food:8'],['鱼','food:9'],['虾贝','food:10'],['其他肉','food:11']]],
 fluids:['喝水',[['和平时',4],['少一些',5],['明显少',6],['喝不下',7]]],
 urine:['小便量',[['和平时','@urineFull'],['明显少','@urineLow'],['很久没尿','@urineNone']]],
+urineTimes:['小便几次（截至记录时）',[['0 次','@none'],['1 次','1'],['2 次','2'],['3 次','3'],['4 次','4'],['5 次','5'],['≥6 次','6+']]],
+urinePerVoid:['每次尿量',[['和平时','@urineFull'],['少一些','@urineSome'],['明显少','@urineLow'],['只有几滴','@urineDrops'],['没留意','@unseen']]],
+lastUrine:['距上次小便',[['<2小时','signal:clock'],['2–<4小时','signal:clock'],['4–<6小时','signal:clock'],['≥6小时','signal:clock']]],
 urineColor:['小便颜色',[['清亮淡黄','@urinePale'],['深黄','@urineDark'],['粉红／红','@urineRed'],['茶色／棕色','@urineBrown'],['没看清','@unseen']]],
 urineChanges:['小便时',[['尿痛','@urinePain'],['见血','@urineBlood'],['明显头晕','signal:dizzy'],['尿频／尿急','@urineFrequent'],['费力／排不出','@urineDifficult']]],
 bowelCount:['大便次数'],
@@ -36,5 +39,5 @@ urgent:['这些感觉',[['发热／寒战','signal:fever'],['胸痛','signal:che
 contact:['旧版联系记录',[['暂时不用',8],['有别的情况','☎']]]
 };
 
-window.QuestionIcons={intake:0,appetite:3,foods:'food:18',staples:'food:0',meatKinds:'food:19',fluids:4,urine:'signal:pee',urineColor:'signal:pee',urineChanges:'signal:pee',bowelCount:'signal:toilet',stoolForms:'signal:toilet',stoolCaliber:'@caliber:pencil',looseCount:'signal:toilet',bowelFeel:14,bowelFeatures:'signal:toilet',lastBowel:'signal:clock',gas:'signal:gas',mouth:'sym:0',mouthImpact:'sym:4',nausea:13,vomitCount:'signal:vomit',keepFluids:7,abdomen:'sym:6',abdomenImpact:'sym:7',nerve:'sym:8',nerveImpact:'sym:9',handFoot:'sym:11',skinImpact:'sym:12',rash:'sym:14',energy:8,sleep:'signal:sleep',sleepDetails:'signal:sleep',urgent:'signal:fever'};
+window.QuestionIcons={intake:0,appetite:3,foods:'food:18',staples:'food:0',meatKinds:'food:19',fluids:4,urine:'signal:pee',urineTimes:'signal:pee',urinePerVoid:'signal:pee',lastUrine:'signal:clock',urineColor:'signal:pee',urineChanges:'signal:pee',bowelCount:'signal:toilet',stoolForms:'signal:toilet',stoolCaliber:'@caliber:pencil',looseCount:'signal:toilet',bowelFeel:14,bowelFeatures:'signal:toilet',lastBowel:'signal:clock',gas:'signal:gas',mouth:'sym:0',mouthImpact:'sym:4',nausea:13,vomitCount:'signal:vomit',keepFluids:7,abdomen:'sym:6',abdomenImpact:'sym:7',nerve:'sym:8',nerveImpact:'sym:9',handFoot:'sym:11',skinImpact:'sym:12',rash:'sym:14',energy:8,sleep:'signal:sleep',sleepDetails:'signal:sleep',urgent:'signal:fever'};
 window.QuestionCaptions={nausea:'恶心',vomitCount:'呕吐',bowelCount:'大便',intake:'饭量',appetite:'胃口',urine:'尿量',urineColor:'尿色',urineChanges:'感觉',stoolForms:'便形',stoolCaliber:'粗细',bowelFeatures:'变化',mouthImpact:'影响',abdomenImpact:'程度',nerveImpact:'影响',skinImpact:'影响',sleepDetails:'表现',lastBowel:'距今',looseCount:'稀便'};
